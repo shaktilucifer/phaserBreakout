@@ -13,9 +13,12 @@ function create() {
     // graphics.lineStyle(2, 0xffd900, 1);
 
     graphics.beginFill(0xFF0000, 1);
-    graphics.drawCircle(300, 300, 100);
+    ball = graphics.drawCircle(300, 300, 100);
 
 }
 
 function update() {
+    
+     ball.x += 1;
+    ball.y += 1;
 }
