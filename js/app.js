@@ -22,7 +22,12 @@ function create() {
     ball.body.velocity.set(150, 150);
     ball.body.collideWorldBounds = true;
     ball.body.bounce.set(1);
-    
+    ///Win lose conditions
+    ball.checkWorldBounds = true;
+    ball.events.onOutOfBounds.add(function(){
+        alert('Game over!');
+        location.reload();
+    }, this);
     //Paddle functions
     
     paddle = game.add.sprite(game.world.width*0.5, game.world.height-5, 'paddle');
