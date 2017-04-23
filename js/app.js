@@ -16,27 +16,27 @@ function preload() {
 }
 
 function create() {
-     var graphics = game.add.graphics(0, 0);
-    graphics.beginFill(0xFF0000, 1);
-    ball = graphics.drawCircle(300, 300, 100);
-
-    game.physics.startSystem(Phaser.Physics.ARCADE);
+     game.physics.startSystem(Phaser.Physics.ARCADE);
+    game.physics.arcade.checkCollision.down = false;
+    ball = game.add.sprite(game.world.width*0.5, game.world.height-25, 'ball');
+    ball.anchor.set(0.5);
     game.physics.enable(ball, Phaser.Physics.ARCADE);
-    ball.body.velocity.set(150, 150);
+    ball.body.velocity.set(150, -150);
     ball.body.collideWorldBounds = true;
     ball.body.bounce.set(1);
-    ///Win lose conditions
     ball.checkWorldBounds = true;
+    //Win lose cons
     ball.events.onOutOfBounds.add(function(){
         alert('Game over!');
         location.reload();
     }, this);
-    //Paddle functions
-    
+
     paddle = game.add.sprite(game.world.width*0.5, game.world.height-5, 'paddle');
     paddle.anchor.set(0.5,1);
     game.physics.enable(paddle, Phaser.Physics.ARCADE);
     paddle.body.immovable = true;
+
+    initBricks();
     
 }
 
@@ -59,4 +59,16 @@ function initBricks() {
         },
         padding: 10
     };
+        bricks = game.add.group();
+    for(c=0; c<brickInfo.count.col; c++) {
+        for(r=0; r<brickInfo.count.row; r++) {
+            var brickX = (r*(brickInfo.width+brickInfo.padding))+brickInfo.offset.left;
+            var brickY = (c*(brickInfo.height+brickInfo.padding))+brickInfo.offset.top;
+            newBrick = game.add.sprite(brickX, brickY, 'brick');
+            game.physics.enable(newBrick, Phaser.Physics.ARCADE);
+            newBrick.body.immovable = true;
+            newBrick.anchor.set(0.5);
+            bricks.add(newBrick);
+        }
+    }
 }
