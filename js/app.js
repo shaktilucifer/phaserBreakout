@@ -1,6 +1,9 @@
 var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 var ball;
 var paddle;
+var bricks;
+var newBrick;
+var brickInfo;
 
 function preload() {
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
@@ -40,4 +43,20 @@ function create() {
 function update() {
      game.physics.arcade.collide(ball, paddle);
     paddle.x = game.input.x || game.world.width*0.5;
+}
+
+function initBricks() {
+    brickInfo = {
+        width: 50,
+        height: 20,
+        count: {
+            row: 7,
+            col: 3
+        },
+        offset: {
+            top: 50,
+            left: 60
+        },
+        padding: 10
+    };
 }
