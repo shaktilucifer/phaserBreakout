@@ -16,9 +16,10 @@ function preload() {
     game.scale.pageAlignHorizontally = true;
     game.scale.pageAlignVertically = true;
     game.stage.backgroundColor = 'grey';
-    //TO DO add paddle image 
-    game.load.image('paddle', 'assets/paddle.png');
 
+    game.load.image('ball', 'assets/ball.png');
+    game.load.image('paddle', 'assets/paddle.png');
+    game.load.image('brick', 'assets/brick.png');
 }
 
 function create() {
