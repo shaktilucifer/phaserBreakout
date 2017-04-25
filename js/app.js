@@ -44,14 +44,17 @@ function create() {
     paddle.body.immovable = true;
 
     initBricks();
-    scoreText = game.add.text(5, 5, 'Points: 0', { font: '18px Arial', fill: '#0095DD' });
+    scoreText = game.add.text(5, 5, 'Points: 0', {
+        font: '18px Arial',
+        fill: '#0095DD'
+    });
 
 }
 
 function update() {
     game.physics.arcade.collide(ball, paddle);
     game.physics.arcade.collide(ball, bricks, ballHitBrick);
-    paddle.x = game.input.x || game.world.width*0.5;
+    paddle.x = game.input.x || game.world.width * 0.5;
 }
 
 function initBricks() {
@@ -85,16 +88,16 @@ function initBricks() {
 function ballHitBrick(ball, brick) {
     brick.kill();
     score += 10;
-    scoreText.setText('Points: '+score);
+    scoreText.setText('Points: ' + score);
 
     var count_alive = 0;
     for (i = 0; i < bricks.children.length; i++) {
-      if (bricks.children[i].alive == true) {
-        count_alive++;
-      }
+        if (bricks.children[i].alive == true) {
+            count_alive++;
+        }
     }
     if (count_alive == 0) {
-      alert('You won the game, congratulations!');
-      location.reload();
+        alert('You won the game, congratulations!');
+        location.reload();
     }
 }
