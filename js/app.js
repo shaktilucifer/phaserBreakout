@@ -10,6 +10,10 @@ var newBrick;
 var brickInfo;
 var scoreText;
 var score = 0;
+//Add extra lives
+var lives = 3;
+var livesText;
+var lifeLostText;
 
 function preload() {
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
