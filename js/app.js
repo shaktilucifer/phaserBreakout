@@ -48,10 +48,13 @@ function create() {
     paddle.body.immovable = true;
 
     initBricks();
-    scoreText = game.add.text(5, 5, 'Points: 0', {
-        font: '18px Arial',
-        fill: '#0095DD'
-    });
+    textStyle = { font: '18px Arial', fill: '#0095DD' };
+    scoreText = game.add.text(5, 5, 'Points: 0', textStyle);
+    livesText = game.add.text(game.world.width-5, 5, 'Lives: '+lives, textStyle);
+    livesText.anchor.set(1,0);
+    lifeLostText = game.add.text(game.world.width*0.5, game.world.height*0.5, 'Life lost, tap to continue', textStyle);
+    lifeLostText.anchor.set(0.5);
+    lifeLostText.visible = false;
 
 }
 
