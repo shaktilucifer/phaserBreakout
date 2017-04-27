@@ -14,6 +14,11 @@ var score = 0;
 var lives = 3;
 var livesText;
 var lifeLostText;
+var playing = false;
+var startButton;
+var playing = false;
+var startButton;
+
 
 function preload() {
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
@@ -125,5 +130,11 @@ function ballLeaveScreen() {
         alert('You lost, game over!');
         location.reload();
     }
+}
+
+function startGame() {
+    startButton.destroy();
+    ball.body.velocity.set(150, -150);
+    playing = true;
 }
 
