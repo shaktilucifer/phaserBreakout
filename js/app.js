@@ -14,11 +14,8 @@ var score = 0;
 var lives = 3;
 var livesText;
 var lifeLostText;
-var playing = false;
+var isPlaying = false;
 var startButton;
-var playing = false;
-var startButton;
-
 
 function preload() {
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
@@ -29,6 +26,7 @@ function preload() {
     game.load.image('ball', 'assets/ball.png');
     game.load.image('paddle', 'assets/paddle.png');
     game.load.image('brick', 'assets/brick.png');
+    game.load.spritesheet('button', 'assets/button.png', 120, 40);
 }
 
 function create() {
@@ -53,20 +51,23 @@ function create() {
     paddle.body.immovable = true;
 
     initBricks();
-    textStyle = { font: '18px Arial', fill: '#0095DD' };
+    textStyle = { font: '18px Roboto', fill: '#0095DD' };
     scoreText = game.add.text(5, 5, 'Points: 0', textStyle);
     livesText = game.add.text(game.world.width-5, 5, 'Lives: '+lives, textStyle);
     livesText.anchor.set(1,0);
     lifeLostText = game.add.text(game.world.width*0.5, game.world.height*0.5, 'Life lost, tap to continue', textStyle);
     lifeLostText.anchor.set(0.5);
     lifeLostText.visible = false;
-
+    startButton = game.add.button(game.world.width*0.5, game.world.height*0.5, 'button', startGame, this, 1, 0, 2);
+    startButton.anchor.set(0.5);
 }
 
 function update() {
     game.physics.arcade.collide(ball, paddle);
     game.physics.arcade.collide(ball, bricks, ballHitBrick);
-    paddle.x = game.input.x || game.world.width * 0.5;
+    if(isPlaying){
+        paddle.x = game.input.x || game.world.width * 0.5;
+    }
 }
 
 function initBricks() {
@@ -133,7 +134,7 @@ function ballLeaveScreen() {
 function startGame() {
     startButton.destroy();
     ball.body.velocity.set(150, -150);
-    playing = true;
+    isPlaying = true;
 }
 
 function ballHitPaddle(ball, paddle) {
