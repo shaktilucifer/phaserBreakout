@@ -106,8 +106,8 @@ function ballHitBrick(ball, brick) {
     }, this);
     killTween.start();
     score += 10;
-    scoreText.setText('Points: '+score);
-    if(score === brickInfo.count.row*brickInfo.count.col*10) {
+    scoreText.setText('Points: '+ score);
+    if(score === brickInfo.count.row * brickInfo.count.col * 10) {
         alert('You won the game, congratulations!');
         location.reload();
     }
@@ -118,8 +118,8 @@ function ballLeaveScreen() {
     if(lives) {
         livesText.setText('Lives: '+lives);
         lifeLostText.visible = true;
-        ball.reset(game.world.width*0.5, game.world.height-25);
-        paddle.reset(game.world.width*0.5, game.world.height-5);
+        ball.reset(game.world.width * 0.5, game.world.height - 25);
+        paddle.reset(game.world.width * 0.5, game.world.height - 5);
         game.input.onDown.addOnce(function(){
             lifeLostText.visible = false;
             ball.body.velocity.set(150, -150);
@@ -139,5 +139,6 @@ function startGame() {
 
 function ballHitPaddle(ball, paddle) {
     ball.animations.play('wobble');
+    ball.body.velocity.x = -1 * 5 * (paddle.x - ball.x)
 }
 
