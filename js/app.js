@@ -24,6 +24,7 @@ function preload() {
     game.stage.backgroundColor = 'grey';
 
     game.load.image('ball', 'assets/ball.png');
+    game.load.image('ball2', 'assets/ball.png');
     game.load.image('paddle', 'assets/paddle.png');
     game.load.image('brick', 'assets/brick.png');
     game.load.spritesheet('button', 'assets/button.png', 120, 40);
@@ -33,8 +34,11 @@ function create() {
     game.physics.startSystem(Phaser.Physics.ARCADE);
     game.physics.arcade.checkCollision.down = false;
     ball = game.add.sprite(game.world.width * 0.5, game.world.height - 25, 'ball');
+    ball1 = game.add.sprite(game.world.width * 0.5, game.world.height - 25, 'ball1');
     ball.anchor.set(0.5);
+    ball1.anchor.set(1.0);
     game.physics.enable(ball, Phaser.Physics.ARCADE);
+    game.physics.enable(ball1, Phaser.Physics.ARCADE);
     ball.body.velocity.set(150, -150);
     ball.body.collideWorldBounds = true;
     ball.body.bounce.set(1);
