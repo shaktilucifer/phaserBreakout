@@ -1,16 +1,16 @@
-# phaserBreakout
-A breakout game built on phaser
+# Breakout
+A breakout game built using Phaser.js
 
 Learning the ropes of javascript gamedev using a simple breakout game!
 
 TO DO:
 
-Add a second ball or paddle.
+* Add a second ball or paddle.
 
-Change the color of the background on every hit.
+* Change the color of the background on every hit.
 
-Change the images.
+* Change the images.
 
-Grant extra bonus points if bricks are destroyed rapidly, several-in-a-row 
+* Grant extra bonus points if bricks are destroyed rapidly, several-in-a-row 
 
-Create levels with different brick layouts.
+* Create levels with different brick layouts.
