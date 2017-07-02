@@ -1,8 +1,13 @@
+/**
+ * @game - object that creates the game window and sets width and height
+ *           of the game. Takes the game creation, update functions as an object
+ */          
 var game = new Phaser.Game(800, 600, Phaser.AUTO, '', {
     preload: preload,
     create: create,
     update: update
 });
+
 var ball;
 var paddle;
 var bricks;
@@ -13,10 +18,14 @@ var score = 0;
 //Add extra lives
 var lives = 3;
 var livesText;
+//Text when you lose a life
 var lifeLostText;
 var isPlaying = false;
 var startButton;
 
+/**
+ * Load the ball,paddle,brick,start button assets 
+ */
 function preload() {
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     game.scale.pageAlignHorizontally = true;
@@ -43,7 +52,7 @@ function create() {
     ball.body.collideWorldBounds = true;
     ball.body.bounce.set(1);
     ball.checkWorldBounds = true;
-    //Win lose cons
+    //Win - lose conditions
     ball.events.onOutOfBounds.add(function() {
         alert('Game over!');
         location.reload();
@@ -140,7 +149,7 @@ function startGame() {
     ball.body.velocity.set(150, -150);
     isPlaying = true;
 }
-
+//little bit of tweem and ball bounce calcs
 function ballHitPaddle(ball, paddle) {
     ball.animations.play('wobble');
     ball.body.velocity.x = -1 * 5 * (paddle.x - ball.x)
