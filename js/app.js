@@ -1,7 +1,3 @@
-/**
- * @game - object that creates the game window and sets width and height
- *           of the game. Takes the game creation, update functions as an object
- */          
 var game = new Phaser.Game(800, 600, Phaser.AUTO, '', {
     preload: preload,
     create: create,
