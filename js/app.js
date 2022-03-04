@@ -23,6 +23,9 @@ var lifeLostText;
 var isPlaying = false;
 var startButton;
 
+const ASSETS = ['assets/ball.png', 'assets/ball.png', 'assets/paddle.png', 'assets/brick.png'];
+const ASSET_NAME = ['ball', 'ball2', 'paddle', 'brick'];
+
 /**
  * Load the ball,paddle,brick,start button assets 
  */
@@ -31,11 +34,10 @@ function preload() {
     game.scale.pageAlignHorizontally = true;
     game.scale.pageAlignVertically = true;
     game.stage.backgroundColor = 'grey';
-
-    game.load.image('ball', 'assets/ball.png');
-    game.load.image('ball2', 'assets/ball.png');
-    game.load.image('paddle', 'assets/paddle.png');
-    game.load.image('brick', 'assets/brick.png');
+    
+    ASSETS.foreach((asset, index) => {
+        game.load.image(ASSET_NAME[index], asset);
+    });
     game.load.spritesheet('button', 'assets/button.png', 120, 40);
 }
 
