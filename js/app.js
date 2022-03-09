@@ -34,6 +34,7 @@ function preload() {
     ASSETS.foreach((asset, index) => {
         game.load.image(ASSET_NAME[index], asset);
     });
+    // add button separately
     game.load.spritesheet('button', 'assets/button.png', 120, 40);
 }
 
