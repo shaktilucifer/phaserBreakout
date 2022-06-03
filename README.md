@@ -1,2 +1,2 @@
-# Breakout
+# phaser Breakout
 A breakout game built using Phaser.js
